@@ -68,9 +68,9 @@ function signUp() {
     })
     .then(response => response.json())
     .then(data => {
-        if (data.outputCode = 1) {
+        if (data.outputCode = "n") {
             window.location.href = "thank-you.html"; // Create this page to thank users
-        } else if (data.outputCode = 2) {
+        } else if (data.outputCode = "x") {
             window.location.href = "existinguser.html";
         } else {
             alert("Registration failed. Please try again.");
