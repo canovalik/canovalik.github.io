@@ -1,17 +1,16 @@
+// Function to validate the access code entered by the user
 function validateAccessCode() {
-    const accessCode = document.getElementById('access-code').value;
-    const flowUrl = 'https://prod-122.westus.logic.azure.com:443/workflows/338032193a5c45ca8beb7fff1b38af4e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=f-K-XKwsdiYC5cnaHj_DBXso4guGjpjzX4v3JPQgTX0';
-
-    fetch(flowUrl, {
+    const accessCode = document.getElementById('accessCode').value;
+    fetch('YOUR_POWER_AUTOMATE_URL_FOR_ACCESS_CODE_VALIDATION', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({ code: accessCode })
     })
     .then(response => response.json())
     .then(data => {
-        if (data.valid) {
+        if (data.isValid) {
             window.location.href = 'signin.html';
         } else {
             window.location.href = 'failure.html';
@@ -20,22 +19,21 @@ function validateAccessCode() {
     .catch(error => console.error('Error:', error));
 }
 
+// Function to log in the user with username and password
 function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const flowUrl = 'YOUR_POWER_AUTOMATE_FLOW_URL_FOR_LOGIN_VALIDATION';
-
-    fetch(flowUrl, {
+    fetch('YOUR_POWER_AUTOMATE_URL_FOR_LOGIN', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username: username, password: password })
     })
     .then(response => response.json())
     .then(data => {
-        if (data.valid) {
-            window.location.href = 'account.html';
+        if (data.isAuthenticated) {
+            window.location.href = 'account.html'; // Assuming 'account.html' exists
         } else {
             window.location.href = 'failure.html';
         }
@@ -43,36 +41,32 @@ function login() {
     .catch(error => console.error('Error:', error));
 }
 
-function signup() {
-    const firstName = document.getElementById('first-name').value;
-    const lastName = document.getElementById('last-name').value;
-    const phone = document.getElementById('phone').value;
+// Function to register a new user
+function register() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const cellPhone = document.getElementById('cellPhone').value;
     const email = document.getElementById('email').value;
-    const username = document.getElementById('username-signup').value;
-    const password = document.getElementById('password-signup').value;
-    const flowUrl = 'https://prod-06.westus.logic.azure.com:443/workflows/6a676667a3c84602bb51f8f6b851bffd/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=s8mFYhKO3GWy9D8dCO-0ZcpAEB22UOH7alIgnUWQtw4';
+    const newUsername = document.getElementById('newUsername').value;
+    const newPassword = document.getElementById('newPassword').value;
 
-    fetch(flowUrl, {
+    fetch('YOUR_POWER_AUTOMATE_URL_FOR_REGISTRATION', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
             firstName: firstName,
             lastName: lastName,
-            phone: phone,
+            cellPhone: cellPhone,
             email: email,
-            username: username,
-            password: password 
+            username: newUsername,
+            password: newPassword
         })
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
-            window.location.href = 'thankyou.html';
-        } else {
-            alert('Registration failed. Please try again.');
-        }
+        window.location.href = 'thankyou.html';
     })
     .catch(error => console.error('Error:', error));
 }
