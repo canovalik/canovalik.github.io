@@ -1,7 +1,7 @@
 // Function to validate the access code entered by the user
 function validateAccessCode() {
     const accessCode = document.getElementById('accessCode').value;
-    fetch('YOUR_POWER_AUTOMATE_URL_FOR_ACCESS_CODE_VALIDATION', {
+    fetch('https://prod-122.westus.logic.azure.com:443/workflows/338032193a5c45ca8beb7fff1b38af4e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=f-K-XKwsdiYC5cnaHj_DBXso4guGjpjzX4v3JPQgTX0', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
