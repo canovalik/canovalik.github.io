@@ -55,7 +55,7 @@ function signUp() {
         password: document.getElementById("password").value
     };
 
-    fetch("https://YOUR_POWER_AUTOMATE_FLOW_URL", {
+    fetch("https://prod-06.westus.logic.azure.com:443/workflows/6a676667a3c84602bb51f8f6b851bffd/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=s8mFYhKO3GWy9D8dCO-0ZcpAEB22UOH7alIgnUWQtw4", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
