@@ -76,3 +76,8 @@ function signUp() {
     })
     .catch(error => console.error("Error:", error));
 }
+
+function logout() {
+    sessionStorage.removeItem("isAuthenticated");
+    window.location.href = "index.html";
+}
