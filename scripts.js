@@ -11,6 +11,8 @@ function validateAccessCode() {
     .then(response => response.json())
     .then(data => {
         if (data.isValid) {
+            // Store a session token
+            sessionStorage.setItem("isAuthenticated", "true");
             window.location.href = "sign-in.html";
         } else {
             window.location.href = "failure.html";
@@ -18,6 +20,8 @@ function validateAccessCode() {
     })
     .catch(error => console.error("Error:", error));
 }
+
+
 
 function login() {
     const username = document.getElementById("username").value;
