@@ -25,6 +25,8 @@
             <input type="text" id="lastName" placeholder="Last Name" required>
             <input type="text" id="cellPhone" placeholder="Cell Phone Number" required>
             <input type="email" id="email" placeholder="Email Address" required>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="passkey" placeholder="Password" required>
             <input type="submit" value="Submit">
         </form>
         <p id="register-success-message" style="color: green; display: none;">Thank you for registering! We will contact you once your account is approved.</p>
@@ -69,9 +71,11 @@
             const lastName = document.getElementById('lastName').value;
             const cellPhone = document.getElementById('cellPhone').value;
             const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const passkey = document.getElementById('passkey').value;
 
             // Example Power Automate flow URL - replace with your actual URL
-            const registerFlowUrl = 'https://your-register-flow-url.com';
+            const registerFlowUrl = 'https://prod-06.westus.logic.azure.com:443/workflows/6a676667a3c84602bb51f8f6b851bffd/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=s8mFYhKO3GWy9D8dCO-0ZcpAEB22UOH7alIgnUWQtw4';
 
             fetch(registerFlowUrl, {
                 method: 'POST',
@@ -80,7 +84,9 @@
                     firstName: firstName,
                     lastName: lastName,
                     cellPhone: cellPhone,
-                    email: email
+                    email: email,
+                    username: username,
+                    passkey: passkey
                 })
             })
             .then(response => response.json())
