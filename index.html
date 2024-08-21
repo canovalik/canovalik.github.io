@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passcode Protected Homepage</title>
+    <title>NFL Pick'em Survivor Poll</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>* Last Man Standing *</h1>
-        <p>The Worlds Greatest Football Poll - 2024<br><br><small><em>Enter your access code below:</em></small></p>
-        <form onsubmit="return checkPasscode()">
-            <input type="text" id="passcode" placeholder="Enter passcode" required>
-            <input type="submit" value="Submit">
-        </form>
-        <p id="error-message" style="color: red; display: none;">Incorrect passcode. Please try again.</p>
+        <h1>Welcome to the NFL Pick'em Survivor Poll</h1>
+        <div id="access-section">
+            <label for="access-code">Enter Access Code:</label>
+            <input type="text" id="access-code" placeholder="Access Code">
+            <button onclick="validateAccessCode()">Enter</button>
+        </div>
     </div>
-
-
     <script src="scripts.js"></script>
 </body>
 </html>
