@@ -1,6 +1,6 @@
 function validateAccessCode() {
     const accessCode = document.getElementById('access-code').value;
-    const flowUrl = 'YOUR_POWER_AUTOMATE_FLOW_URL_FOR_ACCESS_CODE_VALIDATION';
+    const flowUrl = 'https://prod-122.westus.logic.azure.com:443/workflows/338032193a5c45ca8beb7fff1b38af4e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=f-K-XKwsdiYC5cnaHj_DBXso4guGjpjzX4v3JPQgTX0';
 
     fetch(flowUrl, {
         method: 'POST',
@@ -50,7 +50,7 @@ function signup() {
     const email = document.getElementById('email').value;
     const username = document.getElementById('username-signup').value;
     const password = document.getElementById('password-signup').value;
-    const flowUrl = 'YOUR_POWER_AUTOMATE_FLOW_URL_FOR_SIGNUP';
+    const flowUrl = 'https://prod-06.westus.logic.azure.com:443/workflows/6a676667a3c84602bb51f8f6b851bffd/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=s8mFYhKO3GWy9D8dCO-0ZcpAEB22UOH7alIgnUWQtw4';
 
     fetch(flowUrl, {
         method: 'POST',
