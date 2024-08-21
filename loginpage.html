@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm" onsubmit="return handleLogin()">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+        <p id="login-error-message" style="color: red; display: none;">Invalid username or password. Please try again.</p>
+        <button onclick="showRegistrationForm()">Register</button>
+    </div>
 
+    <div id="registrationForm" class="container" style="display: none;">
+        <h1>Register</h1>
+        <form id="registerForm" onsubmit="return handleRegistration()">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="text" id="cellPhone" placeholder="Cell Phone Number" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="submit" value="Submit">
+        </form>
+        <p id="register-success-message" style="color: green; display: none;">Thank you for registering! We will contact you once your account is approved.</p>
+    </div>
+
+    <script>
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Example Power Automate flow URL - replace with your actual URL
+            const loginFlowUrl = 'https://your-flow-url.com';
+
+            fetch(loginFlowUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'nextpage.html';  // Replace with the actual next page URL
+                } else {
+                    document.getElementById('login-error-message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('login-error-message').style.display = 'block';
+            });
+
+            return false;
+        }
+
+        function showRegistrationForm() {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('registrationForm').style.display = 'block';
+        }
+
+        function handleRegistration() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const cellPhone = document.getElementById('cellPhone').value;
+            const email = document.getElementById('email').value;
+
+            // Example Power Automate flow URL - replace with your actual URL
+            const registerFlowUrl = 'https://your-register-flow-url.com';
+
+            fetch(registerFlowUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
+                    cellPhone: cellPhone,
+                    email: email
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('registrationForm').style.display = 'none';
+                    document.getElementById('register-success-message').style.display = 'block';
+                } else {
+                    console.error('Registration failed:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            return false;
+        }
+    </script>
+</body>
+</html>
