@@ -19,8 +19,9 @@
     </div>
 
     <div id="registrationForm" class="container" style="display: none;">
-        <h1>2Register</h1>
-        <form id="registerForm" onsubmit="return handleRegistration()">
+        <h1>3Register</h1>
+        <form id="registerForm" onsubmit="handleRegistration(event)">
+        
             <input type="text" id="firstName" placeholder="First Name" required>
             <input type="text" id="lastName" placeholder="Last Name" required>
             <input type="text" id="cellPhone" placeholder="Cell Phone Number" required>
@@ -66,8 +67,10 @@
             document.getElementById('registrationForm').style.display = 'block';
         }
 
-        function handleRegistration() {
-            const firstName = document.getElementById('firstName').value;
+function handleRegistration(event) {
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+    const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const cellPhone = document.getElementById('cellPhone').value;
             const email = document.getElementById('email').value;
