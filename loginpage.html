@@ -95,10 +95,9 @@ function handleRegistration(event) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    document.getElementById('registrationForm').style.display = 'none';
-                    document.getElementById('register-success-message').style.display = 'block';
+                    window.location.href = 'thankyou.html';  // Redirect to the thank you page
                 } else {
-                    console.error('Registration failed:', data.message);
+                    window.location.href = 'failed.html';  // Redirect to the thank you page
                 }
             })
             .catch(error => {
