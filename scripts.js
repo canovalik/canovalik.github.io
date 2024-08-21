@@ -71,7 +71,8 @@ function signUp() {
         if (data.isSuccess) {
             window.location.href = "thank-you.html"; // Create this page to thank users
         } else {
-            alert("Registration failed. Please try again.");
+            //alert("Registration failed. Please try again.");
+            window.location.href = "existinguser.html";
         }
     })
     .catch(error => console.error("Error:", error));
