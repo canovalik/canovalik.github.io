@@ -1,6 +1,6 @@
         function checkPasscode() {
             const passcode = document.getElementById('passcode').value;
-            const obfuscatedPasscode = 'YmFzZTY0ZW5jb2RlZFZhbHVl';  // Replace with your Base64 encoded passcode
+            const obfuscatedPasscode = 'UEdIX1NvdXRoX0xNUzI0';  // Replace with your Base64 encoded passcode
 
             const decodedPasscode = atob(obfuscatedPasscode);
 
