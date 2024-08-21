@@ -19,13 +19,13 @@
     </div>
 
     <div id="registrationForm" class="container" style="display: none;">
-        <h1>1Register</h1>
+        <h1>2Register</h1>
         <form id="registerForm" onsubmit="return handleRegistration()">
             <input type="text" id="firstName" placeholder="First Name" required>
             <input type="text" id="lastName" placeholder="Last Name" required>
             <input type="text" id="cellPhone" placeholder="Cell Phone Number" required>
             <input type="email" id="email" placeholder="Email Address" required>
-            <input type="text" id="username" placeholder="Username" required>
+            <input type="text" id="newusername" placeholder="Username" required>
             <input type="password" id="passkey" placeholder="Password" required>
             <input type="submit" value="Submit">
         </form>
@@ -71,7 +71,7 @@
             const lastName = document.getElementById('lastName').value;
             const cellPhone = document.getElementById('cellPhone').value;
             const email = document.getElementById('email').value;
-            const username = document.getElementById('username').value;
+            const newusername = document.getElementById('newusername').value;
             const passkey = document.getElementById('passkey').value;
 
             // Example Power Automate flow URL - replace with your actual URL
@@ -85,7 +85,7 @@
                     lastName: lastName,
                     cellPhone: cellPhone,
                     email: email,
-                    username: username,
+                    username: newusername,
                     passkey: passkey
                 })
             })
