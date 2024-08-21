@@ -15,9 +15,24 @@
         <input type="email" id="email" placeholder="Email Address" required>
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
-        <button onclick="signUp()">Sign Up</button>
+        <button id="signUpButton" onclick="signUp()" disabled>Sign Up</button>
     </div>
+    <script>
+        const signUpButton = document.getElementById('signUpButton');
+        const inputs = document.querySelectorAll('input[required]');
 
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                let allFilled = true;
+                inputs.forEach(input => {
+                    if (input.value === '') {
+                        allFilled = false;
+                    }
+                });
+                signUpButton.disabled = !allFilled;
+            });
+        });
+    </script>
     <script src="scripts.js"></script>
 </body>
 </html>
